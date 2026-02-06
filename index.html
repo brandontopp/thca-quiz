@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THCa Edible Quiz</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+<div id="thca-quiz" style="margin:2.5em 0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+  <div id="quiz-card" style="background:#1B3A2F;border-radius:12px;padding:28px 24px;color:#fff;max-width:100%;box-sizing:border-box;">
+    <p style="font-size:0.75em;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#a8c5b8;margin:0 0 6px 0;">Interactive Tool</p>
+    <p id="quiz-title" style="font-size:1.3em;font-weight:700;margin:0 0 6px 0;line-height:1.3;color:#fff;">What Type of THCa Edible Are You Looking At?</p>
+    <p id="quiz-subtitle" style="font-size:0.9em;color:#c8ddd0;margin:0 0 22px 0;">Answer two quick questions to find out.</p>
+
+    <div id="quiz-body">
+      <!-- Q1 -->
+      <div id="q1" style="display:block;">
+        <p style="font-size:1em;font-weight:600;margin:0 0 14px 0;color:#e8f0ec;">Does the COA list other active cannabinoids (Delta-8 THC, Delta-9 THC, or THCP) alongside THCa?</p>
+        <button data-action="q1-yes" style="display:block;width:100%;padding:14px 20px;margin-bottom:10px;background:#2a5c46;color:#fff;border:2px solid #3d7a60;border-radius:12px;font-size:1em;font-weight:600;cursor:pointer;transition:background 0.2s,border-color 0.2s;text-align:left;box-sizing:border-box;">Yes, it shows other active cannabinoids</button>
+        <button data-action="q1-no" style="display:block;width:100%;padding:14px 20px;margin-bottom:0;background:#2a5c46;color:#fff;border:2px solid #3d7a60;border-radius:12px;font-size:1em;font-weight:600;cursor:pointer;transition:background 0.2s,border-color 0.2s;text-align:left;box-sizing:border-box;">No, only THCa is listed</button>
+      </div>
+
+      <!-- Q2 -->
+      <div id="q2" style="display:none;">
+        <p style="font-size:1em;font-weight:600;margin:0 0 14px 0;color:#e8f0ec;">Does the label or product description mention heat processing or activation during manufacturing?</p>
+        <button data-action="q2-yes" style="display:block;width:100%;padding:14px 20px;margin-bottom:10px;background:#2a5c46;color:#fff;border:2px solid #3d7a60;border-radius:12px;font-size:1em;font-weight:600;cursor:pointer;transition:background 0.2s,border-color 0.2s;text-align:left;box-sizing:border-box;">Yes, it mentions heat activation</button>
+        <button data-action="q2-no" style="display:block;width:100%;padding:14px 20px;margin-bottom:0;background:#2a5c46;color:#fff;border:2px solid #3d7a60;border-radius:12px;font-size:1em;font-weight:600;cursor:pointer;transition:background 0.2s,border-color 0.2s;text-align:left;box-sizing:border-box;">No, nothing about heat processing</button>
+      </div>
+
+      <!-- Result: Type 1 -->
+      <div id="r1" style="display:none;">
+        <div style="background:#fdf0f0;border-radius:12px;padding:20px;color:#1a1a1a;">
+          <p style="font-size:0.75em;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#c0756b;margin:0 0 4px 0;">Type 1</p>
+          <p style="font-size:1.15em;font-weight:700;margin:0 0 8px 0;color:#1a1a1a;">Raw / Pure THCa Product</p>
+          <p style="font-size:0.92em;line-height:1.5;margin:0 0 14px 0;color:#4a4a4a;">This product likely contains only unactivated THCa. Don't expect psychoactive effects. If you're looking for an edible that delivers a noticeable experience, you'll want a product with confirmed active THC content instead.</p>
+          <button data-action="reset" style="padding:10px 20px;background:#1B3A2F;color:#fff;border:none;border-radius:12px;font-size:0.9em;font-weight:600;cursor:pointer;">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Result: Type 2 -->
+      <div id="r2" style="display:none;">
+        <div style="background:#eef6f0;border-radius:12px;padding:20px;color:#1a1a1a;">
+          <p style="font-size:0.75em;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#3d7a60;margin:0 0 4px 0;">Type 2</p>
+          <p style="font-size:1.15em;font-weight:700;margin:0 0 8px 0;color:#1a1a1a;">Heat-Activated THCa Product</p>
+          <p style="font-size:0.92em;line-height:1.5;margin:0 0 14px 0;color:#4a4a4a;">This product's THCa was activated during manufacturing. It should function like a standard THC edible. Verify the COA confirms active THC content and matches the label's claimed potency per serving.</p>
+          <button data-action="reset" style="padding:10px 20px;background:#1B3A2F;color:#fff;border:none;border-radius:12px;font-size:0.9em;font-weight:600;cursor:pointer;">Try Again</button>
+        </div>
+      </div>
+
+      <!-- Result: Type 3 -->
+      <div id="r3" style="display:none;">
+        <div style="background:#f0eef6;border-radius:12px;padding:20px;color:#1a1a1a;">
+          <p style="font-size:0.75em;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#7a6bb0;margin:0 0 4px 0;">Type 3</p>
+          <p style="font-size:1.15em;font-weight:700;margin:0 0 8px 0;color:#1a1a1a;">THCa + Psychoactive Blend</p>
+          <p style="font-size:0.92em;line-height:1.5;margin:0 0 14px 0;color:#4a4a4a;">The THCa in this product is not what's producing the effects. The psychoactive experience comes from the other cannabinoids listed (Delta-8, Delta-9, or THCP). Check the COA to confirm exactly which active compounds are present and at what concentration.</p>
+          <button data-action="reset" style="padding:10px 20px;background:#1B3A2F;color:#fff;border:none;border-radius:12px;font-size:0.9em;font-weight:600;cursor:pointer;">Try Again</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+var quiz = document.getElementById('thca-quiz');
+if (quiz) {
+  var subtitle = document.getElementById('quiz-subtitle');
+  var buttons = quiz.querySelectorAll('button[data-action]');
+  
+  buttons.forEach(function(btn) {
+    // Hover effects
+    btn.addEventListener('mouseenter', function() {
+      if (this.style.background === 'rgb(42, 92, 70)') {
+        this.style.background = '#3d7a60';
+        this.style.borderColor = '#5a9a7c';
+      }
+    });
+    
+    btn.addEventListener('mouseleave', function() {
+      if (this.style.background === 'rgb(61, 122, 96)') {
+        this.style.background = '#2a5c46';
+        this.style.borderColor = '#3d7a60';
+      }
+    });
+    
+    // Click handlers
+    btn.addEventListener('click', function() {
+      var action = this.getAttribute('data-action');
+      
+      if (action === 'q1-yes') {
+        document.getElementById('q1').style.display = 'none';
+        document.getElementById('r3').style.display = 'block';
+        subtitle.textContent = 'Result:';
+      } else if (action === 'q1-no') {
+        document.getElementById('q1').style.display = 'none';
+        document.getElementById('q2').style.display = 'block';
+        subtitle.textContent = 'Question 2 of 2';
+      } else if (action === 'q2-yes') {
+        document.getElementById('q2').style.display = 'none';
+        document.getElementById('r2').style.display = 'block';
+        subtitle.textContent = 'Result:';
+      } else if (action === 'q2-no') {
+        document.getElementById('q2').style.display = 'none';
+        document.getElementById('r1').style.display = 'block';
+        subtitle.textContent = 'Result:';
+      } else if (action === 'reset') {
+        document.getElementById('r1').style.display = 'none';
+        document.getElementById('r2').style.display = 'none';
+        document.getElementById('r3').style.display = 'none';
+        document.getElementById('q1').style.display = 'block';
+        document.getElementById('q2').style.display = 'none';
+        subtitle.textContent = 'Answer two quick questions to find out.';
+      }
+    });
+  });
+}
+</script>
+
+</body>
+</html>
